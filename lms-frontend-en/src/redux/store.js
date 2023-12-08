@@ -1,12 +1,24 @@
-import { configureStore } from "@reduxjs/toolkit";
+import './App.css'
 
-import authReducer from './slices/authSlices';
-const store = configureStore({
-    reducer: {
-        auth: authReducer
-    },
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware({serializableCheck: false}),
-    devTools: true
-});
+import { Route, Routes } from 'react-router-dom'
 
-export default store;
+import Aboutus from './pages/Aboutus'
+import Home from './pages/Home'
+import Notfound from './pages/Notfound'
+import Signin from './pages/Signin'
+import Signup from './pages/Signup'
+
+function App() {
+
+  return (
+    <Routes>
+      <Route path='/' element={<Home />} />
+      <Route path='/about' element={<Aboutus />} />
+      <Route path='/signup' element={<Signup />} />
+      <Route path='/signin' element={<Signin />} />
+      <Route path='*' element={<Notfound />} />
+    </Routes>
+  )
+}
+
+export default App
