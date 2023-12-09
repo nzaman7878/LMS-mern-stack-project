@@ -3,7 +3,8 @@ import { FiMenu } from 'react-icons/fi';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 
-import Footer from "../components/footer";
+import Footer from "../components/Footer";
+import { logout } from '../redux/slices/authSlices';
 
 
 function HomeLayout({ children }) {
@@ -27,11 +28,12 @@ function HomeLayout({ children }) {
         drawerSide[0].style.width = '0';
     }
 
-    function onLogout(e) {
+    async function onLogout(e) {
         e.preventDefault();
 
-        // todo
-        navigate("/");
+        const response = await dispatch(logout());
+        if(response?.payload?.data)
+            navigate("/");
     }
 
     return (
@@ -75,10 +77,10 @@ function HomeLayout({ children }) {
                         {!isLoggedIn ? (
                             <li className="absolute bottom-4 w-[90%]">
                                 <div className="w-full flex items-center justify-center">
-                                    <button className="btn-primary  text-white px-4 py-1 font-semibold rounded-md w-full">
-                                        <Link to="/login">Login</Link>
+                                    <button className="btn-primary px-4 py-1 font-semibold rounded-md w-full">
+                                        <Link to="/signin">Login</Link>
                                     </button>
-                                    <button className="btn-secondary  text-white px-4 py-1 font-semibold rounded-md w-full">
+                                    <button className="btn-secondary px-4 py-1 font-semibold rounded-md w-full">
                                         <Link to="/signup">Signup</Link>
                                     </button>
                                 </div>
@@ -86,10 +88,10 @@ function HomeLayout({ children }) {
                         ) : (
                             <li className="absolute bottom-4 w-[90%]">
                                 <div className="w-full flex items-center justify-center">
-                                    <button className="btn-primary  text-white px-4 py-1 font-semibold rounded-md w-full">
+                                    <button className="btn-primary px-4 py-1 font-semibold rounded-md w-full">
                                         <Link to="/user/profile">Profile</Link>
                                     </button>
-                                    <button className="btn-secondary  ] text-white px-4 py-1 font-semibold rounded-md w-full">
+                                    <button className="btn-secondary px-4 py-1 font-semibold rounded-md w-full">
                                         <Link onClick={onLogout}>Logout</Link>
                                     </button>
                                 </div>
