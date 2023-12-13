@@ -1,9 +1,9 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore } from '@reduxjs/toolkit';
 
-import authReducer from './slices/authSlice';
+import authReducer from './slices/authSlices';
 import courseReducer from './slices/courseSlice';
 import lectureReducer from './slices/lectureSlice';
-import razorpayReducer from './slices/razorPaySlice';
+import razorpayReducer from './slices/razorPlaySlice';
 
 
 const store = configureStore({

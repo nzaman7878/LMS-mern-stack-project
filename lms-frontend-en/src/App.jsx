@@ -1,12 +1,12 @@
 import './App.css'
 
-import { Route, Routes } from 'react-router-dom'
+import {Route, Routes} from 'react-router-dom'
 
-import RequireAuth from './components/Auth/RequireAuth'
+import RequireAuth from './components/RequireAuth'
 import Aboutus from './pages/Aboutus'
 import Contact from './pages/Contact'
-import CourseDescription from './pages/Course/CourseDescription'
-import CourseList from './pages/Course/CourseList'
+import CourseDescription from './pages/course/CourseDescription'
+import CourseList from './pages/course/CourseList'
 import CreateCourse from './pages/Course/CreateCourse'
 import AddLecture from './pages/Dashboard/addLecture'
 import DisplayLectures from './pages/Dashboard/DisplayLectures'
@@ -55,4 +55,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
